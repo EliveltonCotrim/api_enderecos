@@ -21,3 +21,8 @@ npm install
 ```
 npm run build
 ```
+Certificar-se de configurar o banco de dados no arquivo .env e, em seguida, executar o seguinte comando:
+```
+php artisan migrate
+```
+
