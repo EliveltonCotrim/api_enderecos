@@ -17,19 +17,22 @@
         </template>
         <template v-slot:content>
             <input-container-component title="Cep" id="idCep">
-                <input type="text" class="form-control" id="cep" placeholder="00000-000" v-model="cep" @blur="buscarCep()">
+                <vue-mask type="text" class="form-control" id="cep" mask="00000-000" :raw="false" placeholder="00000-000"
+                    v-model="createEndereco.cep" @blur="buscarCep()">
+                </vue-mask>
             </input-container-component>
             <input-container-component title="Logradouro" id="idLogradouro">
-                <input type="text" class="form-control" id="idLogradouro" placeholder="" v-model="logradouro">
+                <input type="text" class="form-control" id="idLogradouro" placeholder=""
+                    v-model="createEndereco.logradouro">
             </input-container-component>
             <input-container-component title="Bairro" id="idbairro">
-                <input type="text" class="form-control" id="idbairro" placeholder="" v-model="bairro">
+                <input type="text" class="form-control" id="idbairro" placeholder="" v-model="createEndereco.bairro">
             </input-container-component>
             <input-container-component title="Cidade" id="idCidade">
-                <input type="text" class="form-control" id="idCidade" placeholder="" v-model="cidade">
+                <input type="text" class="form-control" id="idCidade" placeholder="" v-model="createEndereco.cidade">
             </input-container-component>
             <input-container-component title="UF" id="idUf">
-                <input type="text" class="form-control" id="idUf" placeholder="" v-model="uf">
+                <input type="text" class="form-control" id="idUf" placeholder="" v-model="createEndereco.uf">
             </input-container-component>
         </template>
         <template v-slot:footer>
@@ -374,15 +377,18 @@ export default {
                     'Accept': 'application/json'
                 }
             }
-            axios.get(this.urlBase + this.cep, config)
+
+            console.log(this.createEndereco.cep)
+
+            axios.get(this.urlBase + this.createEndereco.cep, config)
                 .then(response => {
 
                     let retorno = response.data
 
-                    this.logradouro = retorno.data.logradouro
-                    this.bairro = retorno.data.bairro
-                    this.cidade = retorno.data.cidade
-                    this.uf = retorno.data.uf
+                    this.createEndereco.logradouro = retorno.data.logradouro
+                    this.createEndereco.bairro = retorno.data.bairro
+                    this.createEndereco.cidade = retorno.data.cidade
+                    this.createEndereco.uf = retorno.data.uf
 
                 })
                 .catch(error => {

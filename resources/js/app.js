@@ -7,7 +7,7 @@ import "vue-toastification/dist/index.css";
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import VueClickAway from "vue3-click-away";
+import VueMask from 'vue-jquery-mask';
 
 import Example from './components/Example.vue';
 import Modal from './components/Modal.vue';
@@ -23,7 +23,7 @@ library.add(fas);
 
 app.component('fa', FontAwesomeIcon);
 app.use(Toast);
-app.use(VueClickAway);
+app.use(VueMask);
 
 app.component('example', Example);
 app.component('modal-component', Modal);
