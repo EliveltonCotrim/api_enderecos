@@ -161,7 +161,7 @@ export default {
                 cidade: '',
                 uf: '',
             },
-            urlBase: 'http://localhost/teste-vaga/public/api/buscar-endereco/',
+            urlBase: 'http://localhost/api_enderecos/public/api/buscar-endereco/',
             statusAlertSuccess: false,
             statusAlertError: false,
             showModal: false,
@@ -192,7 +192,7 @@ export default {
                     'Accept': 'application/json'
                 }
             }
-            axios.get('http://localhost/teste-vaga/public/api/endereco?search=' + this.search, config)
+            axios.get('http://localhost/api_enderecos/public/api/endereco?search=' + this.search, config)
                 .then(response => {
                     this.ceps = response.data
                 })
@@ -234,7 +234,7 @@ export default {
             }
             console.log(this.idCep)
 
-            axios.delete('http://localhost/teste-vaga/public/api/endereco/' + this.deleteEndereco.id, config)
+            axios.delete('http://localhost/api_enderecos/public/api/endereco/' + this.deleteEndereco.id, config)
                 .then(response => {
                     this.toast.success('CEP: ' + this.deleteEndereco.cep + ' excluído com sucesso!', {
                         timeout: 5000,
@@ -258,7 +258,7 @@ export default {
                 }
             }
 
-            axios.get('http://localhost/teste-vaga/public/api/endereco/' + id, config)
+            axios.get('http://localhost/api_enderecos/public/api/endereco/' + id, config)
                 .then(response => {
                     this.statusAlertError = false;
 
@@ -344,7 +344,7 @@ export default {
             formData.append('cidade', this.createEndereco.cidade)
             formData.append('uf', this.createEndereco.uf)
 
-            axios.post('http://localhost/teste-vaga/public/api/endereco', formData, config)
+            axios.post('http://localhost/api_enderecos/public/api/endereco', formData, config)
                 .then(response => {
 
                     if (acao == 'close') {
@@ -378,8 +378,6 @@ export default {
                 }
             }
 
-            console.log(this.createEndereco.cep)
-
             axios.get(this.urlBase + this.createEndereco.cep, config)
                 .then(response => {
 
@@ -401,7 +399,10 @@ export default {
                     'Accept': 'application/json'
                 }
             }
-            axios.get('http://localhost/teste-vaga/public/api/endereco', config)
+
+            console.log(this.url)
+
+            axios.get('http://localhost/api_enderecos/public/api/endereco', config)
                 .then(response => {
                     this.ceps = response.data
                 })

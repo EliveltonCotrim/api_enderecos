@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
-            $table->string('cep', 8)->index();
+            $table->string('cep', 9)->index();
             $table->string('logradouro', 255);
             $table->string('bairro', 255);
             $table->string('cidade', 255);
